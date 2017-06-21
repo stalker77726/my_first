@@ -1,8 +1,9 @@
 from django.db import models
 
 # Create your models here.
-from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
+
 
 
 class Post(models.Model): #определение нашей модели, post является моделью Django
@@ -19,4 +20,10 @@ class Post(models.Model): #определение нашей модели, post 
         self.save()
 
     def __str__(self):
-        return self.title#возвращаем текст с заголовком записи
+        return self.title#возвращаем текст с заголовком запис
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User)
+    
+    def __str__(self):
+        return self.user.username
